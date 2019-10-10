@@ -4,7 +4,7 @@ import cv2
 
 import numpy as np
 
-pictures_num = int(input("Введіть число фотографій для однієї ділянки:"))
+pictures_num = int(input("Введiть число фотографій для однiєї дiлянки: "))
 
 
 
@@ -20,7 +20,7 @@ except OSError:
     print ("Directory %s already exists" % "final")
 else:
     print ("Successfully created the directory %s " % "final")
-print("Ім'я файлу", "\t\t", "Коефіцієнт чіткості")
+print("Iм'я файлу", "\t\t", "Коефiцiєнт чiткостi")
 for path_to_file in listdir("images"):
     img = cv2.imread("images/" + path_to_file, cv2.IMREAD_GRAYSCALE)
     if filename_extension == None:
@@ -41,7 +41,7 @@ for path_to_file in listdir("images"):
     i += 1
     if i is pictures_num:
         best_picture = max(params)  # laplacian_var, name
-        print("The winner:", best_picture[1], best_picture[0])
+        print("Найкраща картинка:", best_picture[1], best_picture[0])
         print()
         # cv2.imshow("Img", cv2.imread("images/" + best_picture[1], cv2.IMREAD_GRAYSCALE))  # showing the best picture
         i = 0
