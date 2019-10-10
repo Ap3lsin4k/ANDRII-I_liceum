@@ -3,13 +3,13 @@ import os
 import cv2
 
 import numpy as np
-pictures_num = 3 #int(input("Введіть число фотографій для однієї ділянки:"))
+pictures_num =1# int(input("Введіть число фотографій для однієї ділянки:"))
 
 params = list()
 final = "final/" # path to save images
 i = 0
 filename_extension = None
-
+dim = 1080, 960
 
 try:
     os.mkdir("final")
@@ -51,7 +51,7 @@ def panorama():
     images = []
     for path_to_file in listdir(final):
         img = cv2.imread(final+path_to_file, cv2.IMREAD_COLOR)
-        # img = cv2.resize(img,dim,interpolation = cv2.INTER_AREA)
+        img = cv2.resize(img,dim,interpolation = cv2.INTER_AREA)
         images.append(img)
     # stitcher = cv2.createStitcher()\n",
     stitcher = cv2.Stitcher.create()
