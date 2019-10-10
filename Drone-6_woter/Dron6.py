@@ -3,7 +3,7 @@ from PIL import Image
 r = 70
 def isWoter(color):
     r, g, b = color
-    if 160<r and r<220 and 150<b and 220<b and 120<c and c<180:
+    if 160<r and r<220 and 150<g and g<220 and 120<b and b<180:
         print(r, g, b)
         return True
     return False

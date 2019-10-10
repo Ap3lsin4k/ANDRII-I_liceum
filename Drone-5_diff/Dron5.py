@@ -1,5 +1,6 @@
 from PIL import Image
 import cv2
+import numpy
 
 def get_main_color(img):
     colors = img.getcolors(2560) #put a higher value if there are many colors in your image
@@ -33,7 +34,8 @@ def imposition(img1,img2):
     Photosave=im1
 img = Image.open("Photo1.jpg")
 img2 = Image.open("Photo2.jpg")
-imgwidth, imgheight = img.size
+imgheight, imgwidth = img.size
+print("H, W", imgheight, imgwidth)
 #img.crop((30, 30, w-80, h-40)).save("file.png")
 amount = 1;
 width, length = 160, 250
@@ -59,12 +61,21 @@ for i in range(0,imgheight,length):
         cropimages2=img2.crop((j, i, w, h))
         imgg1=cropimages1
         imgg2 = cropimages2
-        imgg1.save("1Crop.jpg")
-        imgg2.save("2Crop.jpg")
-        imgg1= cv2.imread("1Crop.jpg")
-        imgg2 = cv2.imread("2Crop.jpg")
-        color1 =  get_avg_color(imgg1)
-        color2 =  get_avg_color(imgg2)
+        #imgg1.save("1Crop.jpg")
+        #imgg2.save("2Crop.jpg")
+        #imgg1= cv2.imread("1Crop.jpg")
+        #imgg2 = cv2.imread("2Crop.jpg")
+        imgg1 = imgg1.convert('RGB')
+        imgg2 = imgg2.convert('RGB') 
+        imgg1_open_cv = numpy.array(imgg1) 
+        imgg2_open_cv = numpy.array(imgg2) 
+        
+        # Convert RGB to BGR 
+        imgg1_open_cv = imgg1_open_cv[:, :, ::-1].copy()
+        imgg2_open_cv = imgg2_open_cv[:, :, ::-1].copy()
+        
+        color1 =  get_avg_color(imgg1_open_cv)
+        color2 =  get_avg_color(imgg2_open_cv)
         mult = abs(color1[0]-color2[0]) * abs(color1[1]-color2[1]) * abs(color1[2]-color2[2])
         if not(mult<=5000):
             imposition(Photosave,img3)
