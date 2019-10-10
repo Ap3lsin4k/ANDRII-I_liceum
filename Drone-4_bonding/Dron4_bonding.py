@@ -1,9 +1,7 @@
 from PIL import Image
-width, length = 1008, 1344
-result=Image.new('RGB', (3*length, 3*width))
 
+result=Image.new('RGB', (4032, 3024))
 bonding_coordinates_path = input("Введiть шлях до файлу з координатами або help: ")
-    
 if 'help' in bonding_coordinates_path:
     print("Приклад файлу")
     print("""
