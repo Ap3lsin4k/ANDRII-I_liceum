@@ -3,7 +3,7 @@ import os
 import cv2
 
 import numpy as np
-pictures_num = 3 #int(input("Введіть число фотографій для однієї ділянки:"))
+pictures_num = int(input("Введіть число фотографій для однієї ділянки:"))
 
 params = list()
 final = "final/" # path to save images
