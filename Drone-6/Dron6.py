@@ -1,25 +1,13 @@
 from PIL import Image
 
 r = 70
-def name(color):
-    a, b, c = color
-    max=a
-    if(b>max):
-        max =b
-    if(c>max):
-        max =c
-    if(c-a>=50 or c-b>=50):
-        return "woter"
-    elif (a>=135 and a<=165 and b>=105 and b<=130 and c<95):
-        return "woter"
-    elif(max>209 and max-b<=r and max-c<=r):
-        return "woter"
-    elif(max<=100 and max-b<=r and max-c<=r):
-        return "wet"
-    elif(max<=209 and max-b<=r and max-c<=r):
-        return "woter"
-    else:
-        return "isn't"
+def isWoter(color):
+    r, g, b = color
+    if 160<r and r<220 and 150<b and 220<b and 120<c and c<180:
+        print(r, g, b)
+        return True
+    return False
+    
 def imposition(img1,img2):
     im1 = img1
     im2 = img2
@@ -68,11 +56,14 @@ for i in range(0,imgheight,length):
         else:
             h = i+length
         
-        #img.crop((j, i, w, h)).save("images/file"+str(amount)+".png")
         cropimages=img.crop((j, i, w, h))
-        color = get_main_color(cropimages)
-        imagename=name(color)
-        if(imagename=="woter"):
+        color = get_main_color(cropimages)  # 1920 1440
+        img.crop((j, i, w, h)).save("images/"+str(color)+".png")
+        print(isWoter(color))
+
+        
+        if isWoter(color):
+            print("imposition")
             imposition(img,img2)
         #cropimages.save("images/"+str(amount)+str(imagename)+str(color)+".png")
         amount=amount+1
