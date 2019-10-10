@@ -15,7 +15,6 @@ def get_avg_color(img):
     n = len(img)*len(img[0])
     for row in img:
         for pixel in row:
-            print(pixel[0])
             red += pixel[0]
             green += pixel[1]
             blue += pixel[2]
@@ -36,7 +35,7 @@ img2 = Image.open("Photo2.jpg")
 imgwidth, imgheight = img.size
 #img.crop((30, 30, w-80, h-40)).save("file.png")
 amount = 1;
-width, length = 15, 10
+width, length = 160, 250
 img3 = Image.new("RGBA", (220, 220), (255, 255, 255)) 
 img3 = Image.open("redd-11.png").convert("RGBA")
 img3 = img3.resize((width,length), Image.ANTIALIAS)
@@ -66,8 +65,7 @@ for i in range(0,imgheight,length):
         color1 =  get_avg_color(imgg1)
         color2 =  get_avg_color(imgg2)
         mult = abs(color1[0]-color2[0]) * abs(color1[1]-color2[1]) * abs(color1[2]-color2[2])
-        print(mult)
-        if not(mult<=12500):
+        if not(mult<=5000):
             imposition(Photosave,img3)
             imposition(Photosave2,img3)
             #cropimages1.save("uncommon/"+"(1)"+str(amount)+str(color1)+".jpg")
