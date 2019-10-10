@@ -1,5 +1,6 @@
 from PIL import Image
 import cv2
+
 def get_main_color(img):
     colors = img.getcolors(2560) #put a higher value if there are many colors in your image
     max_occurence, most_present = 0, 0
