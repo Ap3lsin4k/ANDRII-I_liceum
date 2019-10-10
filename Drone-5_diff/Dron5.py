@@ -35,7 +35,6 @@ def imposition(img1,img2):
 img = Image.open("Photo1.jpg")
 img2 = Image.open("Photo2.jpg")
 imgheight, imgwidth = img.size
-print("H, W", imgheight, imgwidth)
 #img.crop((30, 30, w-80, h-40)).save("file.png")
 amount = 1;
 width, length = 160, 250
@@ -73,7 +72,6 @@ for i in range(0,imgheight,length):
         # Convert RGB to BGR 
         imgg1_open_cv = imgg1_open_cv[:, :, ::-1].copy()
         imgg2_open_cv = imgg2_open_cv[:, :, ::-1].copy()
-        
         color1 =  get_avg_color(imgg1_open_cv)
         color2 =  get_avg_color(imgg2_open_cv)
         mult = abs(color1[0]-color2[0]) * abs(color1[1]-color2[1]) * abs(color1[2]-color2[2])
@@ -83,6 +81,7 @@ for i in range(0,imgheight,length):
             #cropimages1.save("uncommon/"+"(1)"+str(amount)+str(color1)+".jpg")
             #cropimages2.save("uncommon/"+"(2)"+str(amount)+str(color2)+".jpg")
         amount=amount+1
+    print("Проаналізовано: ", str(round(i/imgheight*100))+"%")
 image1 = Photosave
 image2 = Photosave2
 (width1, height1) = image1.size

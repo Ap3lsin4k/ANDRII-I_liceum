@@ -4,7 +4,7 @@ r = 70
 def isWoter(color):
     r, g, b = color
     if 160<r and r<220 and 150<g and g<220 and 120<b and b<180:
-        print(r, g, b)
+        #print(r, g, b)
         return True
     return False
     
@@ -40,7 +40,7 @@ img = img.resize((1000,500), Image.ANTIALIAS)
 imgwidth, imgheight = img.size
 
 amount = 1;
-width, length = 100, 50
+width, length = 20, 20
 img2 = Image.open("kapli.png")
 img2 = img2.resize((width,length), Image.ANTIALIAS)
 img2.save("kapli_save.png")
@@ -59,11 +59,8 @@ for i in range(0,imgheight,length):
         cropimages=img.crop((j, i, w, h))
         color = get_main_color(cropimages)  # 1920 1440
         img.crop((j, i, w, h)).save("images/"+str(color)+".png")
-        print(isWoter(color))
-
         
         if isWoter(color):
-            print("imposition")
             imposition(img,img2)
         #cropimages.save("images/"+str(amount)+str(imagename)+str(color)+".png")
         amount=amount+1
