@@ -36,7 +36,7 @@ except FileNotFoundError:
     img=Image.open("image.jpg")
 
 #todo if too big resize
-img = img.resize((1000,500), Image.ANTIALIAS)
+img = img.resize((1008,756), Image.ANTIALIAS)
 imgwidth, imgheight = img.size
 
 amount = 1;
