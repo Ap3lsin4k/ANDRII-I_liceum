@@ -81,7 +81,7 @@ for i in range(0,imgheight,length):
             #cropimages1.save("uncommon/"+"(1)"+str(amount)+str(color1)+".jpg")
             #cropimages2.save("uncommon/"+"(2)"+str(amount)+str(color2)+".jpg")
         amount=amount+1
-    print("Проаналізовано: ", str(round(i/imgheight*100))+"%")
+    print("Проаналiзовано: ", str(round(i/imgheight*100))+"%")
 image1 = Photosave
 image2 = Photosave2
 (width1, height1) = image1.size

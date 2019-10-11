@@ -23,9 +23,9 @@ def get_main_color(img):
         return most_present
     except TypeError:
         raise Exception("Too many colors in the image")
-print("Програма визначає які ділянки потрібно полити")
+print("Програма визначає якi дiлянки потрібно полити")
 
-name_of_picture = input("Введіть шлях до картинки: ")
+name_of_picture = input("Введiть шлях до картинки: ")
 if name_of_picture is '':
     name_of_picture = "image.jpg"
     print(name_of_picture)
@@ -58,7 +58,6 @@ for i in range(0,imgheight,length):
         
         cropimages=img.crop((j, i, w, h))
         color = get_main_color(cropimages)  # 1920 1440
-        img.crop((j, i, w, h)).save("images/"+str(color)+".png")
         
         if isWoter(color):
             imposition(img,img2)
